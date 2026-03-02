@@ -1,5 +1,5 @@
 from typing import List, Optional
-from db import get_connection
+from db import get_conn
 from models import Vulnerability
 
 class VulnerabilityDAO:
@@ -9,7 +9,7 @@ class VulnerabilityDAO:
         INSERT INTO vulnerabilities (product_id, cve_id, title, description, severity, cvss, published_date, status)
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
         """
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (v.product_id, v.cve_id, v.title, v.description, v.severity, v.cvss, v.published_date, v.status))
         conn.commit()
@@ -21,7 +21,7 @@ class VulnerabilityDAO:
     # READ (one)
     def get_by_id(self, vuln_id: int) -> Optional[Vulnerability]:
         sql = "SELECT vuln_id, product_id, cve_id, title, description, severity, cvss, published_date, status FROM vulnerabilities WHERE vuln_id=%s"
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (vuln_id,))
         row = cur.fetchone()
@@ -39,7 +39,7 @@ class VulnerabilityDAO:
         ORDER BY published_date DESC
         LIMIT %s
         """
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (limit,))
         rows = cur.fetchall()
@@ -55,7 +55,7 @@ class VulnerabilityDAO:
         ORDER BY published_date DESC
         LIMIT %s
         """
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (severity, limit))
         rows = cur.fetchall()
@@ -66,7 +66,7 @@ class VulnerabilityDAO:
     # UPDATE
     def update_status(self, vuln_id: int, new_status: str) -> bool:
         sql = "UPDATE vulnerabilities SET status=%s WHERE vuln_id=%s"
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (new_status, vuln_id))
         conn.commit()
@@ -78,7 +78,7 @@ class VulnerabilityDAO:
     # DELETE
     def delete(self, vuln_id: int) -> bool:
         sql = "DELETE FROM vulnerabilities WHERE vuln_id=%s"
-        conn = get_connection()
+        conn = get_conn()
         cur = conn.cursor()
         cur.execute(sql, (vuln_id,))
         conn.commit()

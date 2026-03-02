@@ -11,8 +11,9 @@
 #         port=int(os.getenv("DB_PORT", "3306")),
 #     )
 import mysql.connector
+import os
 
-def get_connection():
+def get_conn():
     return mysql.connector.connect(
         host="localhost",
         user="root",
