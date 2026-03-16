@@ -169,9 +169,9 @@ The server should start locally at:
 
 ```
 http://127.0.0.1:5000
-Since it is a Flask so it is commonly run on port 5000
-```
 
+```
+Since it is a Flask so it is commonly run on port 5000
 ---
 
 ### 6. Launch the Client
@@ -187,15 +187,15 @@ Example:
 
 ```
 python -m http.server 8000
-port for http client server
 ```
+port for HTTP client-server
 
 Then open:
 
 ```
 http://127.0.0.1:8000
 ```
-
+You can open this in your preferred browser (Chrome, Firefox, etc...).
 ---
 
 ## Verifying Successful Setup
