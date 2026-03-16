@@ -233,4 +233,4 @@ located in the root of this repository.
 
 Ky Nguyen
 University of South Carolina
-CSCE 548 – Software Engineering / Database Systems
+CSCE 548 – Building Secure Software
