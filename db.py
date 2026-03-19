@@ -17,6 +17,6 @@ def get_conn():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="KNThresh@742",
-        database="vuln_db"
+        password="YOUR PASSWORD",
+        database="YOUR DATABASE"
     )
